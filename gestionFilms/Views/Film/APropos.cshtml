@@ -1,0 +1,19 @@
+﻿
+@{
+}
+<h2>À propos</h2>
+
+@if (TempData["MessageFlash"] != null)
+{
+    <div style="padding: 10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 15px;">
+        @TempData["MessageFlash"]
+    </div>
+}
+
+<p>@ViewBag.Message</p>
+
+<ul>
+    <li>Nombre total de films : @ViewBag.NombreTotal</li>
+    <li>Nombre de genres différents : @ViewBag.NombreGenres</li>
+    <li>Film le plus ancien : @ViewBag.AnneePlusAncienne</li>
+</ul>

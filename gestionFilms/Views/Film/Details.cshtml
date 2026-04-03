@@ -1,0 +1,12 @@
+﻿@model Film
+@{
+    ViewData["Title"] = $"Détails : {Model.Titre}"; 
+}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Titre</h5>
+        <p class="card-text">Year : @Model.Annee</p>
+        <a asp-action="Index" asp-route-genre="@Model.Genre" class="btn btn-primary">Retour à la liste @Model.Genre</a>
+    </div>
+</div>

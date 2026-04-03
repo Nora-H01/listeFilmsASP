@@ -1,0 +1,43 @@
+﻿@model List<Film>
+@{
+    ViewData["Title"] = "Films";
+}
+
+<h2>Film - Liste</h2>
+
+<div class="mb-3">
+    <a asp-action="Index" asp-route-genre="@ViewData["CurrentGenre"]" asp-route-sortOrder="titre_asc" class="btn btn-outline-primary btn-sm">Trier (A-Z)</a>
+</div>
+
+@if (Model.Any())
+{
+    <table class="mb-2 table-bordered border-primary">
+        <thead>
+            <tr>
+                <th class="text-center">Titre</th>
+                <th class="text-center">Genre</th>
+                <th class="text-center">Année</th>
+                <th class="text-center">Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Film film in Model)
+            {
+                <tr>
+                    <td class="p-2 mb-1">@film.Titre</td>
+                    <td class ="p-2 mb-1">@film.Genre</td>
+                    <td class="p-2 mb-1">@film.Annee</td>
+                    <td class="p-2 mb-1">
+                        <a asp-action="Details" asp-route-genre="@film.Genre" asp-route-id="@film.Id">Voir détails</a>
+                    </td>                
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Aucun films trouvé...</p>
+}
+<p><a asp-action="APropos">A propos</a></p>
+<p>Nombre total : @Model.Count</p>

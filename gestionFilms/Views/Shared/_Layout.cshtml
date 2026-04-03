@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - gestionFilms</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/gestionFilms.styles.css" asp-append-version="true" />
+</head>
+<body class="p-3 mb-2 bg-dark text-white">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark text-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white fw-bolder" asp-area="" asp-controller="Film" asp-action="Index">FilmsApp</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between bg-dark text-white">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Film" asp-action="Index">Liste de films</a>
+                        </li>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Genre
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Film" asp-action="Index" asp-route-genre="Crime">Crime</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Film" asp-action="Index" asp-route-genre="Action">Action</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Film" asp-action="Index" asp-route-genre="Science Fiction">Science Fiction</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Film" asp-action="Index" asp-route-genre="Fantastique">Fantastique</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Film" asp-action="Index" asp-route-genre="Fantasy">Fantasy</a></li>
+                            </ul>
+                        </div>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Film" asp-action="APropos">A Propos</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-white">
+        <div class="container">
+            &copy; 2026 - FilmsApp - <a asp-area="" asp-controller="Fim" asp-action="Index">Liste de films</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
