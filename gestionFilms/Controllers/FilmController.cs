@@ -5,7 +5,7 @@ namespace gestionFilms.Controllers
 {
     public class FilmController : Controller
     {
-        public readonly List<Film> Films = new()
+        public static readonly List<Film> Films = new()
         {
             new Film { Id = 1, Titre = "Inception", Genre = "Science Fiction", Annee = 2010 },
             new Film { Id = 2, Titre = "The Godfather", Genre = "Crime", Annee = 1972 },
@@ -54,11 +54,60 @@ namespace gestionFilms.Controllers
             return View();
         }
 
-        // Action de test pour démontrer le TempData
-        public IActionResult RedirectionAvecMessage()
+          // 4. Delete : GET - Affiche la page de confirmation pour la suppression
+        public IActionResult Supprimer(int id)
         {
-            TempData["MessageFlash"] = "Succès : Ce message via TempData a survécu à la redirection !";
-            return RedirectToAction(nameof(APropos));
+            var film = Films.FirstOrDefault(f => f.Id == id);
+            if (film == null)
+            {
+                return NotFound();
+            }
+            return View(film);
+        }
+
+        // 5. Delete : POST - Supprime réellement le film
+        [HttpPost, ActionName("Supprimer")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var film = Films.FirstOrDefault(f => f.Id == id);
+            if (film != null)
+            {
+                Films.Remove(film);
+                TempData["MessageFlash"] = $"Le film '{film.Titre}' a été supprimé avec succès.";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // 6. Add : GET - Affiche le formulaire d'ajout
+        public IActionResult Ajouter()
+        {
+            var genres = new List<string> { "Action", "Crime", "Fantastique", "Fantasy", "Science Fiction", "Drame", "Comédie", "Horreur", "Thriller", "Animation" };
+            ViewBag.Genres = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(genres);
+            return View();
+        }
+
+        // 7. Add : POST - Ajoute réellement le film
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Ajouter(Film film)
+        {
+            var genres = new List<string> { "Action", "Crime", "Fantastique", "Fantasy", "Science Fiction", "Drame", "Comédie", "Horreur", "Thriller" };
+
+            if (ModelState.IsValid)
+            {
+                // Attribution du nouvel ID en fonction de ceux existants
+                film.Id = Films.Any() ? Films.Max(f => f.Id) + 1 : 1;
+                Films.Add(film);
+
+                TempData["MessageFlash"] = $"Le film '{film.Titre}' a été ajouté avec succès !";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Retourne le formulaire avec les erreurs de validation si nécessaire
+            ViewBag.Genres = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(genres);
+            return View(film);
         }
     }
 }

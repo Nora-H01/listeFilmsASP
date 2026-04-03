@@ -1,0 +1,45 @@
+@model gestionFilms.Models.Film
+@{
+    ViewData["Title"] = "Ajouter un film";
+}
+
+<h2>Ajouter un nouveau film</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Ajouter" method="post">
+            
+            <div class="mb-3">
+                <label asp-for="Titre" class="form-label mb-1 fw-bold">Titre</label>
+                <input asp-for="Titre" class="form-control" required placeholder="Titre" />
+                <span asp-validation-for="Titre" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Genre" class="form-label mb-1 fw-bold">Genre</label>
+                <select asp-for="Genre" asp-items="ViewBag.Genres" class="form-select" required>
+                    <option value="">-- Sélectionnez un genre --</option>
+                </select>
+                <span asp-validation-for="Genre" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Annee" class="form-label mb-1 fw-bold">Année</label>
+                <input asp-for="Annee" type="number" class="form-control" min="1895" max="2100" required placeholder="Ex : 2026" />
+                <span asp-validation-for="Annee" class="text-danger small"></span>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check-circle"></i> Ajouter
+                </button>
+                <a asp-action="Index" class="btn btn-secondary ms-2 align-middle">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
