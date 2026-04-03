@@ -25,3 +25,8 @@ Une application web développée en ASP.NET Core MVC permettant de consulter et 
 - `Models/Film.cs` : La structure de données (le modèle) définissant les attributs d'un film (Id, Titre, Genre, Année).
 - `Views/Film/` : Les pages de l'interface utilisateur, rendues dynamiquement grâce à Razor (`Index.cshtml`, `Details.cshtml`, `APropos.cshtml`).
 - `Views/Shared/_Layout.cshtml` : Le gabarit principal contenant la barre de navigation et le pied de page du site.
+
+## Images
+<img width="835" height="875" alt="image" src="https://github.com/user-attachments/assets/d2703341-0a00-46df-b9c0-a36920ab4c01" />
+<img width="937" height="878" alt="image" src="https://github.com/user-attachments/assets/36e3a1fa-7dd2-444f-ba29-d9bd3476c452" />
+
