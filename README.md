@@ -27,6 +27,6 @@ Une application web développée en ASP.NET Core MVC permettant de consulter et 
 - `Views/Shared/_Layout.cshtml` : Le gabarit principal contenant la barre de navigation et le pied de page du site.
 
 ## Images
-<img width="835" height="875" alt="image" src="https://github.com/user-attachments/assets/d2703341-0a00-46df-b9c0-a36920ab4c01" />
-<img width="937" height="878" alt="image" src="https://github.com/user-attachments/assets/36e3a1fa-7dd2-444f-ba29-d9bd3476c452" />
+<img width="250" height="255" alt="image" src="https://github.com/user-attachments/assets/d2703341-0a00-46df-b9c0-a36920ab4c01" />
+<img width="255" height="200" alt="image" src="https://github.com/user-attachments/assets/36e3a1fa-7dd2-444f-ba29-d9bd3476c452" />
 
