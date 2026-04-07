@@ -26,6 +26,7 @@
                 <th class="text-center">Titre</th>
                 <th class="text-center">Genre</th>
                 <th class="text-center">Année</th>
+                <th class="text-center">Résumé</th>
                 <th class="text-center">Détails</th>
                 <th class="text-center">Actions</th>
             </tr>
@@ -37,6 +38,7 @@
                     <td class="p-2 mb-1">@film.Titre</td>
                     <td class ="p-2 mb-1">@film.Genre</td>
                     <td class="p-2 mb-1">@film.Annee</td>
+                    <td class="p-2 mb-1">@film.Description</td>
                     <td class="p-2 mb-1">
                         <a asp-action="Details" asp-route-genre="@film.Genre" asp-route-id="@film.Id">Voir détails</a>
                     </td>                

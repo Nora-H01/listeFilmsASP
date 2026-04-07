@@ -12,5 +12,6 @@ namespace gestionFilms.Models
         public string Genre { get; set; } = string.Empty;
         [Range(1900, 2030, ErrorMessage = "L'année doit être comprise entre 1900 et 2030")]
         public int Annee { get; set; }
+        public string? Description { get; set; }
     }
 }

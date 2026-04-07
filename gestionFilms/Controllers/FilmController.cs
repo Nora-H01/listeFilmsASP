@@ -7,13 +7,60 @@ namespace gestionFilms.Controllers
     {
         public static readonly List<Film> Films = new()
         {
-            new Film { Id = 1, Titre = "Inception", Genre = "Science Fiction", Annee = 2010 },
-            new Film { Id = 2, Titre = "The Godfather", Genre = "Crime", Annee = 1972 },
-            new Film { Id = 3, Titre = "Pulp Fiction", Genre = "Crime", Annee = 1994 },
-            new Film { Id = 4, Titre = "Harry Potter", Genre = "Fantastique", Annee = 2001 },
-            new Film { Id = 5, Titre = "The Dark Knight", Genre = "Action", Annee = 2008 },
-            new Film { Id = 6, Titre = "The Lord of the Rings", Genre = "Fantasy", Annee = 2001 }
-        };
+           new Film
+                {
+                    Id = 1,
+                    Titre = "Inception",
+                    Genre = "Science Fiction",
+                    Annee = 2010,
+                    Description = "Un voleur infiltre les rêves pour implanter une idée."
+                },
+
+                new Film
+                {
+                    Id = 2,
+                    Titre = "The Godfather",
+                    Genre = "Crime",
+                    Annee = 1972,
+                    Description = "L’ascension d’un héritier dans une famille mafieuse."
+                },
+
+                new Film
+                {
+                    Id = 3,
+                    Titre = "Pulp Fiction",
+                    Genre = "Crime",
+                    Annee = 1994,
+                    Description = "Des histoires criminelles entremêlées à Los Angeles."
+                },
+
+                new Film
+                {
+                    Id = 4,
+                    Titre = "Harry Potter",
+                    Genre = "Fantastique",
+                    Annee = 2001,
+                    Description = "Un jeune sorcier découvre son destin à Poudlard."
+                },
+
+                new Film
+                {
+                    Id = 5,
+                    Titre = "The Dark Knight",
+                    Genre = "Action",
+                    Annee = 2008,
+                    Description = "Batman affronte le Joker qui plonge Gotham dans le chaos."
+                },
+
+                new Film
+                {
+                    Id = 6,
+                    Titre = "The Lord of the Rings",
+                    Genre = "Fantasy",
+                    Annee = 2001,
+                    Description = "Un hobbit doit détruire un anneau maléfique."
+                }
+            };
 
         //1.Index(string? genre = null) : affiche tous les films ou ceux correspondant au genre passé en paramètre
         //Bonus : trier les films par titre dans l’ordre croissant si un paramètre de tri est passé (ex : ?sortOrder=titre_asc)
@@ -99,6 +146,12 @@ namespace gestionFilms.Controllers
             {
                 // Attribution du nouvel ID en fonction de ceux existants
                 film.Id = Films.Any() ? Films.Max(f => f.Id) + 1 : 1;
+
+                if (string.IsNullOrWhiteSpace(film.Description))
+                {
+                    film.Description = "Pas de résumé noté";
+                }
+
                 Films.Add(film);
 
                 TempData["MessageFlash"] = $"Le film '{film.Titre}' a été ajouté avec succès !";

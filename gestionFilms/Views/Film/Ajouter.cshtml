@@ -30,6 +30,12 @@
                 <span asp-validation-for="Annee" class="text-danger small"></span>
             </div>
 
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label mb-1 fw-bold">Résumé</label>
+                <input asp-for="Description" class="form-control" placeholder="Petit résumé..." />
+                <span asp-validation-for="Description" class="text-danger small"></span>
+            </div>
+
             <div class="mt-4">
                 <button type="submit" class="btn btn-success">
                     <i class="bi bi-check-circle"></i> Ajouter
