@@ -3,12 +3,26 @@
     ViewData["Title"] = $"Détails : {Model.Titre}"; 
 }
 
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">@Model.Titre</h5>
-        <p class="card-text">Année : @Model.Annee</p>
-        <p class="card-text">Résumé : @Model.Description</p>
-        <a asp-controller="Film" asp-action="Index" asp-route-genre="@Model.Genre" class="btn btn-primary">Liste de ce genre @Model.Genre</a>
-        <a asp-controller="Film" asp-action="Index" asp-route-genre="" class="btn btn-primary mt-2">Retour à la liste de tous les films</a>
+    <div class="card bg-secondary bg-gradient text-white rounded-4 shadow-sm" style="max-width: 30rem;">
+        <div class="card-body p-4">
+            <h3 class="card-title text-center fw-bold mb-3">@Model.Titre</h3>
+            <p class="card-text">
+                <span class="fw-bolder">Année : </span>
+                <span class="fw-light">@Model.Annee</span>
+            </p>
+            <p class="card-text">
+            <span class="fw-bolder">Résumé : </span>
+            <span class="fw-light"> @Model.Description</span>
+            </p>
+
+            <div class="d-flex flex-column gap-2 mt-4">
+                <a asp-controller="Film" asp-action="Index" asp-route-genre="@Model.Genre" class="btn btn-primary p-2">
+                    <i class="bi bi-collection"></i> Liste du genre '@Model.Genre'
+                </a>
+                <a asp-controller="Film" asp-action="Index" asp-route-genre="" class="btn btn-outline-light p-2">
+                    <i class="bi bi-arrow-left"></i> Retour à la liste de films
+                </a>
+            </div>
+        </div>
     </div>
-</div>
+
