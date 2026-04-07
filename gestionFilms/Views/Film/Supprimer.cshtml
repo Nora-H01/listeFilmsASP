@@ -2,26 +2,28 @@
 @{
     ViewData["Title"] = "Supprimer un film";
 }
+<div class="bg-secondary bg-gradient bg-opacity-75 rounded-4 p-3">
+    <h3 class="text-warning mt-3 mb-4">Êtes-vous sûr de vouloir supprimer ce film ?</h3>
 
-<h2>Suppression</h2>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">Titre</dt>
+            <dd class="col-sm-10">@Model.Titre</dd>
 
-<h3 class="text-danger mt-3 mb-4">Êtes-vous sûr de vouloir supprimer ce film ?</h3>
+            <dt class="col-sm-2">Genre</dt>
+            <dd class="col-sm-10">@Model.Genre</dd>
 
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">Titre</dt>
-        <dd class="col-sm-10">@Model.Titre</dd>
+            <dt class="col-sm-2">Année de sortie</dt>
+            <dd class="col-sm-10">@Model.Annee</dd>
 
-        <dt class="col-sm-2">Genre</dt>
-        <dd class="col-sm-10">@Model.Genre</dd>
-
-        <dt class="col-sm-2">Année de sortie</dt>
-        <dd class="col-sm-10">@Model.Annee</dd>
-    </dl>
+            <dt class="col-sm-2">Résumé</dt>
+            <dd class="col-sm-10">@Model.Description</dd>
+        </dl>
     
-    <form asp-action="Supprimer" method="post" class="mt-4">
-        <input type="hidden" asp-for="Id" />
-        <button type="submit" class="btn btn-danger">Supprimer</button>
-        <a asp-action="Index" class="btn btn-secondary ms-2">Retour à la liste</a>
-    </form>
+        <form asp-action="Supprimer" method="post" class="mt-4">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+            <a asp-action="Index" class="btn btn-primary opacity-75 ms-2">Retour à la liste</a>
+        </form>
+    </div>
 </div>
