@@ -6,7 +6,9 @@
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">@Model.Titre</h5>
-        <p class="card-text">Year : @Model.Annee</p>
-        <a asp-action="Index" asp-route-genre="@Model.Genre" class="btn btn-primary">Retour à la liste @Model.Genre</a>
+        <p class="card-text">Année : @Model.Annee</p>
+        <p class="card-text">Résumé : @Model.Description</p>
+        <a asp-controller="Film" asp-action="Index" asp-route-genre="@Model.Genre" class="btn btn-primary">Liste de ce genre @Model.Genre</a>
+        <a asp-controller="Film" asp-action="Index" asp-route-genre="" class="btn btn-primary mt-2">Retour à la liste de tous les films</a>
     </div>
 </div>
